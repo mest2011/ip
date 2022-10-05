@@ -17,7 +17,7 @@ function App() {
   const url_api = "https://mesttech.com.br/ip/api/?json=true;";
 
   const axios = axiosBase.create();
-  axios.defaults.timeout = 500;
+  axios.defaults.timeout = 800;
   axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
 
   useEffect(() => {
@@ -30,8 +30,8 @@ function App() {
       })
       .catch(() => {
         toastr.warning(
-          "Recarregue a pagina, caso o problema persista, tente mais tarde.",
-          "Problema ao pegar o IP!",
+          "Recarregue a página, caso o problema persista, tente mais tarde.",
+          "Problema ao obter o seu IP!",
           {
             timeOut: 5000,
           }
@@ -45,7 +45,7 @@ function App() {
   const copyToClipBoard = () => {
     navigator.clipboard.writeText(ip);
 
-    toastr.success("Dados copiado para área de transferencia.", "Copiado!", {
+    toastr.success("Dados copiados para área de transferência.", "Copiado!", {
       timeOut: 5000,
     });
   };
@@ -95,7 +95,7 @@ function App() {
               color="success"
               style={{ backgroundColor: "var(--main)" }}
             >
-              Use tambem nosso api de IP
+              Use tambem nossa API de IP
             </Button>
           </Link>
         </Box>
