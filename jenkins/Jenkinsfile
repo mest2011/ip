@@ -1,11 +1,6 @@
 pipeline {
     agent any
     
-    environment {
-        NODE_VERSION = '16' // Define a versão do Node.js
-        YARN_VERSION = '1.22.17' // Define a versão do Yarn
-    }
-    
     stages {
         stage('Checkout') {
             steps {
@@ -16,12 +11,6 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
-                    // Define o ambiente Node.js e Yarn
-                    def nodeHome = tool 'NodeJS ' + NODE_VERSION
-                    env.PATH = "${nodeHome}/bin:${env.PATH}"
-                    def yarnHome = tool 'Yarn ' + YARN_VERSION
-                    env.PATH = "${yarnHome}/bin:${env.PATH}"
-                    
                     // Instala as dependências usando Yarn
                     sh 'yarn install'
                 }
@@ -31,25 +20,8 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    // Define o ambiente Node.js e Yarn novamente (pode ser necessário dependendo do ambiente)
-                    def nodeHome = tool 'NodeJS ' + NODE_VERSION
-                    env.PATH = "${nodeHome}/bin:${env.PATH}"
-                    def yarnHome = tool 'Yarn ' + YARN_VERSION
-                    env.PATH = "${yarnHome}/bin:${env.PATH}"
-                    
                     // Executa o comando de build (substitua pelo seu comando de build específico)
                     sh 'yarn build'
-                }
-            }
-        }
-        
-        stage('Test') {
-            steps {
-                script {
-                    // Define o ambiente Node.js e Yarn novamente se necessário
-                    
-                    // Executa os testes (substitua pelo seu comando de teste específico)
-                    sh 'yarn test'
                 }
             }
         }
