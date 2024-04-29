@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-        NODE_VERSION = '16' // Define a versão do Node.js
+        NODE_VERSION = 'NodeJS 16' // Define a versão do Node.js
         YARN_VERSION = '1.22.17' // Define a versão do Yarn
     }
     
