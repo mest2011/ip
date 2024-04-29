@@ -65,10 +65,4 @@ pipeline {
             }
         }
     }
-    
-    post {
-        always {
-            // Limpa o ambiente após a execução do pipeline, se necessário
-        }
-    }
 }
