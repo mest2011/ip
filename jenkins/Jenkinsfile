@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     // Instala as dependências usando Yarn
-                    sh 'yarn install'
+                    sh 'npm i'
                 }
             }
         }
@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
                     // Executa o comando de build (substitua pelo seu comando de build específico)
-                    sh 'yarn build'
+                    sh 'npm run build'
                 }
             }
         }
@@ -32,7 +32,7 @@ pipeline {
                     // Define o ambiente Node.js e Yarn novamente se necessário
                     
                     // Executa o deploy (substitua pelo seu comando de deploy específico)
-                    sh 'yarn start'
+                    sh 'npm run start'
                 }
             }
         }
