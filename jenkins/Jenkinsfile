@@ -13,7 +13,11 @@ pipeline {
                 script {
                     // Instala as dependências usando Yarn
                     sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash'
-                    sh 'export NVM_DIR="$HOME/.nvm"'
+                    sh 'export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
+
+
+                    sh 'source ~/.bashrc'
                     sh 'nvm use'
                     sh 'npm i'
                 }
