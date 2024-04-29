@@ -12,6 +12,8 @@ pipeline {
             steps {
                 script {
                     // Instala as dependências usando Yarn
+                    sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash'
+                    sh 'nvm use'
                     sh 'npm i'
                 }
             }
