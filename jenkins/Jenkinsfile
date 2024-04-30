@@ -1,5 +1,11 @@
 pipeline {
     agent any
+
+    environment {
+        NODE_VERSION = '16' // Define a versão do Node.js
+        YARN_VERSION = '1.22.17' // Define a versão do Yarn
+    }
+
     
     stages {
         stage('Checkout') {
@@ -7,13 +13,6 @@ pipeline {
                 checkout scm
             }
         }
-
-
-        environment {
-            NODE_VERSION = '16' // Define a versão do Node.js
-            YARN_VERSION = '1.22.17' // Define a versão do Yarn
-        }
-
         
         stage('Install Dependencies') {
             steps {
