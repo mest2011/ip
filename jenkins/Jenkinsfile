@@ -7,16 +7,21 @@ pipeline {
                 checkout scm
             }
         }
+
+
+        environment {
+            NODE_VERSION = '16' // Define a versão do Node.js
+            YARN_VERSION = '1.22.17' // Define a versão do Yarn
+        }
+
         
         stage('Install Dependencies') {
             steps {
                 script {
-                    // Instala as dependências usando Yarn
-                    sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash'
-                    sh 'export NVM_DIR="$HOME/.nvm"'
+                    // Define o ambiente Node.js e Yarn
+                    def nodeHome = tool 'NodeJS ' + NODE_VERSION
+                    env.PATH = "${nodeHome}/bin:${env.PATH}"
 
-
-                    sh 'source ~/.bashrc'
                     sh 'nvm use'
                     sh 'npm i'
                 }
@@ -26,6 +31,9 @@ pipeline {
         stage('Build') {
             steps {
                 script {
+                    // Define o ambiente Node.js e Yarn novamente (pode ser necessário dependendo do ambiente)
+                    def nodeHome = tool 'NodeJS ' + NODE_VERSION
+                    env.PATH = "${nodeHome}/bin:${env.PATH}"
                     // Executa o comando de build (substitua pelo seu comando de build específico)
                     sh 'npm run build'
                 }
