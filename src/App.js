@@ -14,7 +14,7 @@ import toastr from "toastr";
 function App() {
   const [ip, setIp] = useState();
   const [loading, setLoading] = useState();
-  const url_api = "https://mesttech.com.br/ip/api/?json=true;";
+  const url_api = "https://ip.mesttech.com.br/api/?json=true";
 
   const axios = axiosBase.create();
   axios.defaults.timeout = 800;
